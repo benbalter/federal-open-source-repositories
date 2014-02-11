@@ -12,7 +12,7 @@ h2 { margin-top: 1em; }
 footer { margin-top: 50px; }
 
 .header-link {
-  position: relative;
+  position: absolute;
   left: 5%;
   opacity: 0;
 
