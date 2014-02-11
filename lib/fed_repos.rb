@@ -13,7 +13,7 @@ Octokit.auto_paginate = true
 module FedRepos
   class App < Sinatra::Base
 
-    REGISTRY_API = 'http://registry.usa.gov/accounts.json?service_id=github'
+    ORGS_JSON = 'http://government.github.com/organizations.json'
 
     set :root, File.dirname(File.dirname(__FILE__))
 
@@ -37,9 +37,9 @@ module FedRepos
     def agencies
       @agencies ||=
         begin
-          data = open REGISTRY_API
+          data = open ORGS_JSON
           data = JSON.parse data.read
-          data["accounts"]
+          data["United States"]
         rescue
           []
         end
@@ -55,7 +55,7 @@ module FedRepos
       return @organizations unless @organizations.nil?
       @organizations = []
       agencies.each do |agency|
-        org = Organization.new agency["account"], client
+        org = Organization.new agency, client
         @organizations.push org unless org.data.nil?
       end
       @organizations.sort_by! {|org| org.data.public_repos }
