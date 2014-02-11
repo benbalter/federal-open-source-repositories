@@ -34,12 +34,6 @@ module FedRepos
       @client ||= Octokit::Client.new(:access_token => env['warden'].user.token)
     end
 
-    # require ssl
-    configure :production do
-      require 'rack-ssl-enforcer'
-      use Rack::SslEnforcer
-    end
-
     def agencies
       @agencies ||=
         begin
