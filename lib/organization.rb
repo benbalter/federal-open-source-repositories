@@ -17,7 +17,8 @@ class Organization
   end
 
   def name
-    data.name
+    return data.name unless data.name.nil?
+    @account
   end
 
   def repos

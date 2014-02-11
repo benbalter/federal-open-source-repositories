@@ -58,6 +58,8 @@ module FedRepos
         org = Organization.new agency["account"], client
         @organizations.push org unless org.data.nil?
       end
+      @organizations.sort_by! {|org| org.data.public_repos }
+      @organizations.reverse!
       @organizations
     end
 
