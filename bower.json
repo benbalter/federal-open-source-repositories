@@ -1,0 +1,22 @@
+{
+  "name": "federal-open-source-repos",
+  "version": "0.0.1",
+  "authors": [
+    "Ben Balter <ben.balter@github.com>"
+  ],
+  "description": "A dynamically generated list of open source projects hosted on GitHub",
+  "main": "config.ru",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.8.0",
+    "bootstrap": "~2.3.0"
+  }
+}

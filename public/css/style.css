@@ -1,0 +1,12 @@
+body { margin-top: 30px; margin-bottom: 30px;  }
+.hero-unit h1 { font-size: 50px; }
+h2 { margin-top: 1em; }
+.label a, .label a:visited { color: white; }
+.label a:hover { text-decoration: none; }
+.meta { float: right; margin-top: 1em; }
+.meta li { margin-left: 5px; }
+.repos { list-style: none; margin-left: 0; padding-left: 0; }
+.repo { margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+.updated {color: #bbb; font-size: 12px; }
+#agencies {min-height: 100%;}
+footer { margin-top: 50px; }

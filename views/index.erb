@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Federal Open Source Repos</title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="/vendor/bootstrap/docs/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/docs/assets/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </head>
+  <body>
+
+    <div id="container" class="container" role="main">
+
+      <div class="page-header">
+        <h1>Federal Open Source Repos</h1>
+        <p class="lead">A dynamically generated list of open source projects hosted on GitHub</p>
+        <p class="lead">
+          <strong>Agencies:</strong> <%= organizations.count %> |
+          <strong>Public Repositories:</strong> <%= repo_count %>
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="span12">
+          <div id="agencies">
+            <% organizations.each do |org| %>
+              <div class="agency">
+                <h2><%= org.name %> (<span class="count"><%= org.repos.count %></span>)</h2>
+                <ul class="repos">
+                  <% org.repos.each do |repo| %>
+                    <li class="repo">
+                      <ul class="meta">
+                        <li class="language label"><%= repo.language || "" %></li>
+
+                        <li class="stars label">
+                          <a href="https://github.com/<%= repo.owner.login %>/<%= repo.name %>/watchers" target="_blank">
+                            <i class="icon-star icon-white"></i>
+                            <%= repo.watchers_count %>
+                          </a>
+                        </li>
+
+                        <li class="forks label">
+                          <a href="https://github.com/<%= repo.owner.login %>/<%= repo.name %>/forks" target="_blank">
+                            <i class="icon-random icon-white"></i>
+                            <%= repo.forks_count %>
+                          </a>
+                        </li>
+                      </ul><!-- /meta -->
+
+                      <h3>
+                        <a href="https://github.com/<%= repo.owner.login %>/<%= repo.name %>" target="_blank">
+                          <%= repo.name %>
+                        </a>
+                      </h3>
+
+                      <p class="description"><%= repo.description %></p>
+
+                      <div class="updated">Last Updated <span class="ts"><%= repo.updated_at %></span></div>
+                    </li><!-- /repo -->
+                  <% end %><%# repo loop %>
+                </ul><!-- /repos -->
+              </div><!-- /agency -->
+            <% end %><%# agencies loop %>
+        </div><!-- /agencies -->
+      </div>
+    </div>
+
+    <footer class="row">
+      <div class="span12">
+        <em>All data used on this page is pulled from the <a href="http://www.usa.gov/About/developer-resources/social-media-registry.shtml">USA.gov Social Media Registry</a> and the <a href="http://developer.github.com/v3/">GitHub API</a></em>.
+      </div>
+    </footer>
+
+  </div> <!--! end of #container -->
+
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/moment/min/moment.min.js"></script>
+    <script>
+      jQuery(function($){
+        $(".updated .ts").each(function(i,ts){
+          $(ts).text(moment($(ts).text()).fromNow());
+        })
+      })
+    </script>
+
+    <!--[if lt IE 7 ]>
+      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+      <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+    <![endif]-->
+
+  </body>
+</html>

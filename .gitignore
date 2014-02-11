@@ -1,0 +1,8 @@
+.env
+/public/vendor/bootstrap/less
+/public/vendor/bootstrap/docs/build
+/public/vendor/bootstrap/docs/examples
+/public/vendor/bootstrap/docs/templates
+/public/vendor/bootstrap/docs/*.html
+/public/vendor/moment/lang
+/.bundle
