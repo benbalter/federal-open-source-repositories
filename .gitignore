@@ -6,3 +6,6 @@
 /public/vendor/bootstrap/docs/*.html
 /public/vendor/moment/lang
 /.bundle
+/public/vendor/font-awesome/less
+/public/vendor/font-awesome/scss
+/public/vendor/font-awesome/src

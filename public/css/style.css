@@ -10,3 +10,15 @@ h2 { margin-top: 1em; }
 .updated {color: #bbb; font-size: 12px; }
 #agencies {min-height: 100%;}
 footer { margin-top: 50px; }
+
+.header-link {
+  position: relative;
+  left: 5%;
+  opacity: 0;
+
+  -webkit-transition: opacity 0.2s ease-in-out 0.1s;
+  -moz-transition: opacity 0.2s ease-in-out 0.1s;
+  -ms-transition: opacity 0.2s ease-in-out 0.1s;
+}
+
+h2:hover .header-link { opacity: 1; }
