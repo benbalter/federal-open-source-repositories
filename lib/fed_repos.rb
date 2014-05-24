@@ -5,6 +5,7 @@ require 'octokit'
 require 'sinatra_auth_github'
 require 'dotenv'
 require 'sinatra'
+require 'csv'
 require './lib/organization'
 
 Dotenv.load
@@ -69,6 +70,20 @@ module FedRepos
 
     get '/' do
       erb :index, :locals => { :organizations => organizations, :repo_count => repo_count }
+    end
+
+    get "/repos.csv" do
+      content_type 'application/csv'
+      attachment "repos.csv"
+      output = CSV.generate do |csv|
+        csv << ["owner", "repo", "nwo", "forks", "watchers"]
+        organizations.each do |org|
+          org.repos.each do |repo|
+            csv << [repo.owner.login, repo.name, repo.full_name, repo.forks_count, repo.watchers_count]
+          end
+        end
+      end
+      output
     end
 
   end
