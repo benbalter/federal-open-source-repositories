@@ -13,7 +13,7 @@ Octokit.auto_paginate = true
 module FedRepos
   class App < Sinatra::Base
 
-    ORGS_JSON = 'http://government.github.com/organizations.json'
+    ORGS_JSON = 'https://government.github.com/organizations.json'
 
     set :root, File.dirname(File.dirname(__FILE__))
 
@@ -39,7 +39,7 @@ module FedRepos
         begin
           data = open ORGS_JSON
           data = JSON.parse data.read
-          data["United States"]
+          data["governments"]["United States"]
         rescue
           []
         end
